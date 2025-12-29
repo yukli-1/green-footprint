@@ -45,7 +45,7 @@
             </div>
             
             <div class="challenge-visual">
-              <img :src="getChallengeImage(challenge.type)" :alt="challenge.title" class="challenge-image"/>
+              <span class="challenge-emoji">{{ getChallengeEmoji(challenge.type) }}</span>
             </div>
             
             <h3>{{ challenge.title }}</h3>
@@ -459,14 +459,14 @@ export default {
       alert('挑战创建成功！')
     }
 
-    const getChallengeImage = (type) => {
-      const challengeImages = {
-        '垃圾分类': '/images/scenarios/recycling.svg',
-        '绿色出行': '/images/scenarios/green-transport.svg',
-        '节约能源': '/images/scenarios/green-transport.svg',
-        '植树造林': '/images/scenarios/recycling.svg'
+    const getChallengeEmoji = (type) => {
+      const challengeEmojis = {
+        '垃圾分类': '♻️',
+        '绿色出行': '🚲',
+        '节约能源': '💡',
+        '植树造林': '🌳'
       }
-      return challengeImages[type] || '/images/scenarios/green-transport.svg'
+      return challengeEmojis[type] || '🌱'
     }
 
     return {
@@ -479,7 +479,7 @@ export default {
       challenges,
       newChallenge,
       filteredChallenges,
-      getChallengeImage,
+      getChallengeEmoji,
       myChallenges,
       getCurrentTagTitle,
       getCurrentLeaderboard,
@@ -635,21 +635,14 @@ h1 {
   margin: 15px 0;
   border-radius: 12px;
   overflow: hidden;
-  background: #f8f9fa;
+  background: linear-gradient(135deg, #e8f5e8 0%, #dcedc8 100%);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.challenge-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.challenge-card:hover .challenge-image {
-  transform: scale(1.05);
+.challenge-emoji {
+  font-size: 5rem;
 }
 
 .challenge-type {

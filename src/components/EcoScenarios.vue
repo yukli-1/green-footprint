@@ -20,10 +20,7 @@
 
     <div class="scenario-content" v-if="currentScenario">
       <div class="scenario-intro">
-        <div class="scenario-visual" v-if="currentScenario.image">
-          <img :src="currentScenario.image" :alt="currentScenario.name">
-        </div>
-        <div class="scenario-visual" v-else class="emoji-visual">
+        <div class="scenario-visual emoji-visual">
           <span class="emoji-large">{{ currentScenario.icon }}</span>
         </div>
         <div class="scenario-info">
@@ -119,11 +116,8 @@
           :class="{ locked: scenario.locked }"
           @click="exploreScenario(scenario)"
         >
-          <div class="explore-image" v-if="scenario.image">
-            <img :src="scenario.image" :alt="scenario.name">
-          </div>
-          <div class="explore-image" v-else class="explore-emoji">
-            <span>{{ scenario.icon }}</span>
+          <div class="explore-emoji">
+            <span class="explore-emoji-text">{{ scenario.icon || '🌟' }}</span>
             <div class="explore-overlay">
               <span v-if="scenario.locked">🔒</span>
               <span v-else>🚀</span>
@@ -186,7 +180,6 @@ export default {
         name: '家庭环保',
         icon: '🏠',
         description: '打造绿色家庭，从日常小事做起',
-        image: null,
         difficulty: '简单',
         duration: '日常',
         impact: '高'
@@ -196,7 +189,6 @@ export default {
         name: '办公环保',
         icon: '🏢',
         description: '绿色办公，低碳工作',
-        image: null,
         difficulty: '中等',
         duration: '工作日',
         impact: '中'
@@ -206,7 +198,6 @@ export default {
         name: '校园环保',
         icon: '🏫',
         description: '建设绿色校园，培养环保意识',
-        image: null,
         difficulty: '简单',
         duration: '学期',
         impact: '高'
@@ -216,7 +207,6 @@ export default {
         name: '社区环保',
         icon: '🏘️',
         description: '共建绿色社区，共享美好生活',
-        image: null,
         difficulty: '中等',
         duration: '长期',
         impact: '高'
@@ -227,7 +217,7 @@ export default {
       home: {
         name: '家庭环保',
         description: '通过改变生活习惯，让家庭成为环保的第一站',
-        image: null,
+        icon: '🏠',
         difficulty: '简单',
         duration: '日常',
         impact: '高',
@@ -278,7 +268,7 @@ export default {
       office: {
         name: '办公环保',
         description: '在工作场所践行环保理念，打造绿色办公环境',
-        image: null,
+        icon: '🏢',
         difficulty: '中等',
         duration: '工作日',
         impact: '中',
@@ -324,7 +314,7 @@ export default {
       school: {
         name: '校园环保',
         description: '在学校开展环保活动，培养环保意识',
-        image: null,
+        icon: '🏫',
         difficulty: '简单',
         duration: '学期',
         impact: '高',
@@ -370,7 +360,7 @@ export default {
       community: {
         name: '社区环保',
         description: '在社区中推广环保理念，共建绿色家园',
-        image: null,
+        icon: '🏘️',
         difficulty: '中等',
         duration: '长期',
         impact: '高',
@@ -420,7 +410,7 @@ export default {
         id: 'shopping',
         name: '绿色购物',
         shortDescription: '环保购物指南',
-        image: '/api/placeholder/300/200',
+        icon: '🛒',
         difficulty: 'simple',
         duration: '单次',
         locked: false
@@ -429,7 +419,7 @@ export default {
         id: 'travel',
         name: '低碳旅行',
         shortDescription: '环保旅行方式',
-        image: '/api/placeholder/300/200',
+        icon: '✈️',
         difficulty: 'medium',
         duration: '旅行期',
         locked: false
@@ -438,7 +428,7 @@ export default {
         id: 'festival',
         name: '节日环保',
         shortDescription: '绿色过节方式',
-        image: '/api/placeholder/300/200',
+        icon: '🎉',
         difficulty: 'simple',
         duration: '节日期间',
         locked: true
@@ -447,7 +437,7 @@ export default {
         id: 'digital',
         name: '数字环保',
         shortDescription: '线上环保行动',
-        image: '/api/placeholder/300/200',
+        icon: '💻',
         difficulty: 'simple',
         duration: '持续',
         locked: false
@@ -582,14 +572,7 @@ export default {
   margin-bottom: 30px;
 }
 
-.scenario-visual img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 15px;
-}
-
-.emoji-visual {
+.scenario-visual {
   width: 100%;
   height: 200px;
   display: flex;
@@ -867,23 +850,17 @@ export default {
   cursor: not-allowed;
 }
 
-.explore-image {
-  position: relative;
-  height: 150px;
-}
-
-.explore-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .explore-emoji {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 150px;
   font-size: 3rem;
   background: linear-gradient(135deg, rgba(39, 174, 96, 0.08), rgba(46, 204, 113, 0.08));
+}
+
+.explore-emoji-text {
+  font-size: 4rem;
 }
 
 .explore-overlay {

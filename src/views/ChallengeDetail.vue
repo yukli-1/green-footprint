@@ -12,7 +12,7 @@
       <!-- 挑战头部信息 -->
       <section class="challenge-header">
         <div class="challenge-visual">
-          <img :src="getChallengeImage(challenge.type)" :alt="challenge.title" class="challenge-image"/>
+          <span class="challenge-emoji">{{ getChallengeEmoji(challenge.type) }}</span>
           <div class="challenge-badge" :class="challenge.status">
             {{ getStatusText(challenge.status) }}
           </div>
@@ -154,14 +154,14 @@
       <section class="related-challenges">
         <h2>🔗 相关挑战</h2>
         <div class="related-grid">
-          <div 
-            v-for="relatedChallenge in relatedChallenges" 
+          <div
+            v-for="relatedChallenge in relatedChallenges"
             :key="relatedChallenge.id"
             class="related-card"
             @click="navigateToChallenge(relatedChallenge.id)"
           >
             <div class="related-visual">
-              <img :src="getChallengeImage(relatedChallenge.type)" :alt="relatedChallenge.title" class="related-image"/>
+              <span class="related-emoji">{{ getChallengeEmoji(relatedChallenge.type) }}</span>
             </div>
             <h4>{{ relatedChallenge.title }}</h4>
             <p>{{ relatedChallenge.description }}</p>
@@ -346,14 +346,14 @@ export default {
       return `${minutes}分钟后结束`
     }
     
-    const getChallengeImage = (type) => {
-      const challengeImages = {
-        '垃圾分类': '/images/scenarios/recycling.svg',
-        '绿色出行': '/images/scenarios/green-transport.svg',
-        '节约能源': '/images/scenarios/green-transport.svg',
-        '植树造林': '/images/scenarios/recycling.svg'
+    const getChallengeEmoji = (type) => {
+      const challengeEmojis = {
+        '垃圾分类': '♻️',
+        '绿色出行': '🚲',
+        '节约能源': '💡',
+        '植树造林': '🌲'
       }
-      return challengeImages[type] || '/images/scenarios/green-transport.svg'
+      return challengeEmojis[type] || '🏆'
     }
     
     const getChallengeGoal = (challenge) => {
@@ -478,7 +478,7 @@ export default {
       isFavorite,
       getStatusText,
       getRemainingTime,
-      getChallengeImage,
+      getChallengeEmoji,
       getChallengeGoal,
       getDuration,
       getCompletionCriteria,
@@ -559,14 +559,18 @@ export default {
 
 .challenge-visual {
   position: relative;
-}
-
-.challenge-image {
   width: 100%;
   height: 200px;
-  object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(39, 174, 96, 0.1), rgba(46, 204, 113, 0.1));
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.challenge-emoji {
+  font-size: 6rem;
 }
 
 .challenge-badge {
@@ -856,16 +860,14 @@ export default {
   margin-bottom: 15px;
   border-radius: 10px;
   overflow: hidden;
-  background: #f8f9fa;
+  background: linear-gradient(135deg, rgba(39, 174, 96, 0.08), rgba(46, 204, 113, 0.08));
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.related-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.related-emoji {
+  font-size: 4rem;
 }
 
 .related-card h4 {

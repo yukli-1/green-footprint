@@ -246,16 +246,16 @@ export default {
       return date.toLocaleString('zh-CN')
     }
 
-    const getActionImage = (typeId) => {
-      const actionImages = {
-        'recycling': '/images/scenarios/recycling.svg',
-        'green_transport': '/images/scenarios/green-transport.svg',
-        'water_saving': '/images/scenarios/recycling.svg',
-        'energy_saving': '/images/scenarios/green-transport.svg',
-        'tree_planting': '/images/scenarios/recycling.svg',
-        'cleanup': '/images/scenarios/green-transport.svg'
+    const getActionEmoji = (typeId) => {
+      const actionEmojis = {
+        'recycling': '♻️',
+        'green_transport': '🚲',
+        'water_saving': '💧',
+        'energy_saving': '💡',
+        'tree_planting': '🌳',
+        'cleanup': '🧹'
       }
-      return actionImages[typeId] || '/images/scenarios/green-transport.svg'
+      return actionEmojis[typeId] || '🌱'
     }
 
     return {
@@ -269,7 +269,7 @@ export default {
       calculateDurationBonus,
       calculateTotalPoints,
       handleImageUpload,
-      getActionImage,
+      getActionEmoji,
       submitAction,
       formatTime
     }

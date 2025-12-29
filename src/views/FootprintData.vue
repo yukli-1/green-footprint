@@ -36,7 +36,7 @@
         <h2>📍 足迹分布图</h2>
         <div class="map-container">
           <div class="map-visualization">
-            <div class="map-emoji-bg">🗺️</div>
+            <img src="/images/new/9.jpg" alt="足迹地图" class="map-background"/>
             <div 
               v-for="(location, index) in uniqueLocations" 
               :key="index"
@@ -70,8 +70,8 @@
           <div class="garden-grid">
             <div v-for="plant in store.plants" :key="plant.id" class="plant-card">
               <div class="plant-visual">
-                  <img :src="getPlantImage(plant.emoji || plant.name)" :alt="plant.name" class="plant-image"/>
-                </div>
+                <span class="plant-emoji">{{ plant.emoji || '🌱' }}</span>
+              </div>
               <div class="plant-info">
                 <h4>{{ plant.name }}</h4>
                 <p>{{ plant.description }}</p>
@@ -89,7 +89,7 @@
             <div class="shop-grid">
               <div v-for="plant in availablePlants" :key="plant.id" class="plant-item">
                 <div class="plant-emoji">
-                  <img :src="getPlantImage(plant.emoji || plant.name)" :alt="plant.name" class="plant-shop-image"/>
+                  <span class="shop-plant-emoji">{{ plant.emoji }}</span>
                 </div>
                 <h4>{{ plant.name }}</h4>
                 <p>{{ plant.description }}</p>
@@ -145,14 +145,14 @@
         <div class="badges-grid">
           <div v-for="badge in store.user.badges" :key="badge.id" class="badge-card earned">
             <div class="badge-icon">
-              <img :src="getBadgeImage(badge.id)" :alt="badge.name" class="badge-image"/>
+              <span class="badge-emoji">{{ badge.icon || '🏅' }}</span>
             </div>
             <h4>{{ badge.name }}</h4>
             <p>{{ badge.description }}</p>
           </div>
           <div v-for="badge in lockedBadges" :key="badge.id" class="badge-card locked">
             <div class="badge-icon">
-              <img :src="getBadgeImage(badge.id)" :alt="badge.name" class="badge-image locked-badge"/>
+              <span class="badge-emoji locked-emoji">🔒</span>
             </div>
             <h4>{{ badge.name }}</h4>
             <p>{{ badge.requirement }}</p>
@@ -235,10 +235,15 @@ export default {
           day: dayName,
           date: date.toLocaleDateString(),
           count: dayActions.length,
-          percentage: Math.max(10, (dayActions.length / Math.max(1, ...data.map(d => d.count))) * 100)
+          percentage: 10
         })
       }
-      
+
+      const maxCount = Math.max(1, ...data.map(d => d.count))
+      data.forEach(day => {
+        day.percentage = Math.max(10, (day.count / maxCount) * 100)
+      })
+
       return data
     })
 
@@ -344,52 +349,16 @@ export default {
       }
     }
 
-    const getPlantImage = (emojiOrName) => {
-      const plantImages = {
-        '🌻': '/images/plants/sunflower.svg',
-        'sunflower': '/images/plants/sunflower.svg',
-        'sunflower.svg': '/images/plants/sunflower.svg',
-        '🌹': '/images/plants/rose.svg',
-        'rose': '/images/plants/rose.svg',
-        'rose.svg': '/images/plants/rose.svg',
-        '🌵': '/images/plants/cactus.svg',
-        'cactus': '/images/plants/cactus.svg',
-        'cactus.svg': '/images/plants/cactus.svg',
-        '🌸': '/images/plants/cherry-blossom.svg',
-        '🎋': '/images/plants/bamboo.svg',
-        '樱花': '/images/plants/cherry-blossom.svg',
-        '樱花树': '/images/plants/cherry-blossom.svg',
-        'cherry': '/images/plants/cherry-blossom.svg',
-        'cherry-blossom.svg': '/images/plants/cherry-blossom.svg',
-        '竹子': '/images/plants/bamboo.svg',
-        'bamboo': '/images/plants/bamboo.svg',
-        'bamboo.svg': '/images/plants/bamboo.svg'
+
+
+    const getBadgeEmoji = (badgeId) => {
+      const badgeEmojis = {
+        1: '🌱',
+        2: '♻️',
+        3: '🚲',
+        4: '🏆'
       }
-
-      const key = (emojiOrName || '').toString().trim()
-      if (plantImages[key]) return plantImages[key]
-
-      // fallback: if value looks like a filename or path, return it
-      if (/\.(svg|png|jpg|jpeg)$/i.test(key)) return key
-
-      // last fallback: return a tiny inline SVG placeholder showing the emoji (or a leaf)
-      const char = key || '🌱'
-      const svg = encodeURIComponent(`
-        <svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'>
-          <rect width='100%' height='100%' fill='%23f8fff9'/>
-          <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='64'>${char}</text>
-        </svg>`)
-      return `data:image/svg+xml;charset=UTF-8,${svg}`
-    }
-
-    const getBadgeImage = (badgeId) => {
-      const badgeImages = {
-        1: '/images/badges/bronze-eco-warrior.svg',
-        2: '/images/badges/bronze-eco-warrior.svg', 
-        3: '/images/badges/silver-eco-champion.svg',
-        4: '/images/badges/gold-eco-master.svg'
-      }
-      return badgeImages[badgeId] || '/images/badges/bronze-eco-warrior.svg'
+      return badgeEmojis[badgeId] || '🏅'
     }
 
     return {
@@ -402,8 +371,7 @@ export default {
       getLocationStyle,
       waterPlant,
       buyPlant,
-      getPlantImage,
-      getBadgeImage
+      getBadgeEmoji
     }
   }
 }
@@ -455,6 +423,7 @@ h1 {
   border-radius: 20px;
   padding: 30px;
   margin-bottom: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 h2 {
@@ -549,18 +518,10 @@ h2 {
   box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.2);
 }
 
-.map-emoji-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 6rem;
-  background: linear-gradient(135deg, rgba(39, 174, 96, 0.08), rgba(46, 204, 113, 0.08));
-  z-index: 0;
+.map-background {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .map-visualization::before {
@@ -673,7 +634,7 @@ h2 {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.95) 100%);
   border-radius: 20px;
   padding: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -715,17 +676,9 @@ h2 {
   animation: plantGrow 3s ease-in-out infinite alternate;
 }
 
-.plant-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.plant-image {
+.plant-emoji {
+  font-size: 4rem;
   display: block;
-  max-width: 140px;
-  max-height: 140px;
-  margin: 0 auto;
 }
 
 @keyframes plantGrow {
@@ -811,7 +764,8 @@ h2 {
   border-radius: 10px;
   padding: 15px;
   text-align: center;
-  border: 1px solid #e0e0e0;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-left: 3px solid rgba(46, 204, 113, 0.5);
 }
 
 .plant-emoji {
@@ -823,15 +777,8 @@ h2 {
   justify-content: center;
 }
 
-.plant-shop-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.plant-emoji {
+.shop-plant-emoji {
   font-size: 2.5rem;
-  margin-bottom: 10px;
 }
 
 .plant-item h4 {
@@ -1004,13 +951,11 @@ h2 {
   justify-content: center;
 }
 
-.badge-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+.badge-emoji {
+  font-size: 3rem;
 }
 
-.badge-image.locked-badge {
+.badge-emoji.locked-emoji {
   filter: grayscale(0.8) opacity(0.6);
 }
 

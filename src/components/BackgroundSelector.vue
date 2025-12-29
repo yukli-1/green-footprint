@@ -67,6 +67,7 @@ export default {
         name: '森林风光',
         description: '郁郁葱葱的森林景象',
         emoji: '🌲',
+        fullImage: '/images/backgrounds/forest-hero.svg',
         tags: ['自然', '绿色']
       },
       {
@@ -74,6 +75,7 @@ export default {
         name: '渐变环保',
         description: '现代感的渐变效果',
         emoji: '🌊',
+        fullImage: '/images/backgrounds/gradient-eco.svg',
         tags: ['现代', '渐变']
       },
       {
@@ -81,6 +83,7 @@ export default {
         name: '粒子星空',
         description: '动态粒子效果',
         emoji: '✨',
+        fullImage: '/images/backgrounds/particle-field.svg',
         tags: ['科技', '动态']
       },
       {
@@ -88,6 +91,7 @@ export default {
         name: '几何生态',
         description: '几何图形组合',
         emoji: '🔷',
+        fullImage: '/images/backgrounds/geometric-eco.svg',
         tags: ['几何', '设计']
       },
       {
@@ -95,6 +99,7 @@ export default {
         name: '自然精华',
         description: '高质量自然景观',
         emoji: '🌿',
+        fullImage: '/images/backgrounds/nature-premium.svg',
         tags: ['自然', '高质量']
       }
     ]
