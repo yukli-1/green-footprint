@@ -1,0 +1,50 @@
+<svg width="200" height="100" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="leafGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#81C784;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4CAF50;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="leafGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#A5D6A7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#66BB6A;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="leafGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#C8E6C9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#81C784;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 叶子1 -->
+  <g transform="translate(30, 50) rotate(-15)">
+    <ellipse cx="0" cy="0" rx="15" ry="8" fill="url(#leafGradient1)" opacity="0.8"/>
+    <line x1="0" y1="-8" x2="0" y2="8" stroke="#2E7D32" stroke-width="0.5"/>
+    <circle cx="0" cy="0" r="1" fill="#1B5E20"/>
+  </g>
+  
+  <!-- 叶子2 -->
+  <g transform="translate(100, 30) rotate(25)">
+    <ellipse cx="0" cy="0" rx="12" ry="6" fill="url(#leafGradient2)" opacity="0.7"/>
+    <line x1="0" y1="-6" x2="0" y2="6" stroke="#2E7D32" stroke-width="0.5"/>
+    <circle cx="0" cy="0" r="0.8" fill="#1B5E20"/>
+  </g>
+  
+  <!-- 叶子3 -->
+  <g transform="translate(150, 60) rotate(-30)">
+    <ellipse cx="0" cy="0" rx="18" ry="10" fill="url(#leafGradient3)" opacity="0.6"/>
+    <line x1="0" y1="-10" x2="0" y2="10" stroke="#2E7D32" stroke-width="0.5"/>
+    <circle cx="0" cy="0" r="1.2" fill="#1B5E20"/>
+  </g>
+  
+  <!-- 装饰性小元素 -->
+  <circle cx="70" cy="80" r="3" fill="#FFC107" opacity="0.4"/>
+  <circle cx="180" cy="25" r="2" fill="#FF9800" opacity="0.3"/>
+  <circle cx="25" cy="15" r="2.5" fill="#4CAF50" opacity="0.5"/>
+  
+  <!-- 花朵 -->
+  <g transform="translate(60, 70)">
+    <circle cx="0" cy="0" r="2" fill="#E91E63" opacity="0.6"/>
+    <circle cx="-3" cy="-2" r="1.5" fill="#F06292" opacity="0.5"/>
+    <circle cx="3" cy="-2" r="1.5" fill="#F06292" opacity="0.5"/>
+    <circle cx="0" cy="-3" r="1" fill="#F8BBD0" opacity="0.7"/>
+  </g>
+</svg>
