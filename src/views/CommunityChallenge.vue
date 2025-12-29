@@ -461,12 +461,12 @@ export default {
 
     const getChallengeImage = (type) => {
       const challengeImages = {
-        '垃圾分类': '/images/scenarios/recycling-9.JPG',
-        '绿色出行': '/images/scenarios/green-transport-9.JPG',
-        '节约能源': '/images/scenarios/green-transport-9.JPG',
-        '植树造林': '/images/scenarios/recycling-9.JPG'
+        '垃圾分类': '/images/scenarios/recycling.svg',
+        '绿色出行': '/images/scenarios/green-transport.svg',
+        '节约能源': '/images/scenarios/green-transport.svg',
+        '植树造林': '/images/scenarios/recycling.svg'
       }
-      return challengeImages[type] || '/images/scenarios/green-transport-9.JPG'
+      return challengeImages[type] || '/images/scenarios/green-transport.svg'
     }
 
     return {

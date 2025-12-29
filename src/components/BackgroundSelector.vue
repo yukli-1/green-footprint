@@ -9,15 +9,15 @@
     
     <div class="selector-content" :class="{ active: showSelector }">
       <div class="background-grid">
-        <div 
-          v-for="bg in backgrounds" 
+        <div
+          v-for="bg in backgrounds"
           :key="bg.id"
           class="background-item"
           :class="{ active: selectedBackground === bg.id }"
           @click="selectBackground(bg.id)"
         >
           <div class="bg-preview">
-            <img :src="bg.thumbnail" :alt="bg.name" class="preview-image"/>
+            <span class="bg-emoji">{{ bg.emoji }}</span>
             <div class="preview-overlay">
               <div class="bg-name">{{ bg.name }}</div>
               <div class="bg-description">{{ bg.description }}</div>
@@ -27,9 +27,9 @@
             <h4>{{ bg.name }}</h4>
             <p>{{ bg.description }}</p>
             <div class="bg-tags">
-              <span 
-                v-for="tag in bg.tags" 
-                :key="tag" 
+              <span
+                v-for="tag in bg.tags"
+                :key="tag"
                 class="tag"
                 :style="{ backgroundColor: getTagColor(tag) }"
               >
@@ -66,40 +66,35 @@ export default {
         id: 'forest-hero',
         name: '森林风光',
         description: '郁郁葱葱的森林景象',
-        thumbnail: '/images/heroes/forest-hero-9.JPG',
-        fullImage: '/images/heroes/forest-hero-9.JPG',
+        emoji: '🌲',
         tags: ['自然', '绿色']
       },
       {
         id: 'gradient-eco',
         name: '渐变环保',
         description: '现代感的渐变效果',
-        thumbnail: '/images/backgrounds/gradient-eco-9.JPG',
-        fullImage: '/images/backgrounds/gradient-eco-9.JPG',
+        emoji: '🌊',
         tags: ['现代', '渐变']
       },
       {
         id: 'particle-field',
         name: '粒子星空',
         description: '动态粒子效果',
-        thumbnail: '/images/backgrounds/particle-field-9.JPG',
-        fullImage: '/images/backgrounds/particle-field-9.JPG',
+        emoji: '✨',
         tags: ['科技', '动态']
       },
       {
         id: 'geometric-eco',
         name: '几何生态',
         description: '几何图形组合',
-        thumbnail: '/images/backgrounds/geometric-eco-9.JPG',
-        fullImage: '/images/backgrounds/geometric-eco-9.JPG',
+        emoji: '🔷',
         tags: ['几何', '设计']
       },
       {
         id: 'nature-premium',
         name: '自然精华',
         description: '高质量自然景观',
-        thumbnail: '/images/backgrounds/nature-premium-9.JPG',
-        fullImage: '/images/backgrounds/nature-premium-9.JPG',
+        emoji: '🌿',
         tags: ['自然', '高质量']
       }
     ]
@@ -193,7 +188,6 @@ export default {
           tryAlternativePath()
         }
         
-        testImg.src = background.fullImage
       }
     }
     
@@ -455,6 +449,15 @@ export default {
   overflow: hidden;
 }
 
+.bg-emoji {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+
 .preview-image {
   width: 100%;
   height: 100%;
@@ -462,7 +465,7 @@ export default {
   transition: transform 0.3s ease;
 }
 
-.background-item:hover .preview-image {
+.background-item:hover .bg-emoji {
   transform: scale(1.05);
 }
 

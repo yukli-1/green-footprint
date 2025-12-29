@@ -111,19 +111,19 @@ export default {
         id: 2,
         class: 'clouds-layer',
         speed: 0.3,
-        image: '/images/backgrounds/parallax-layers-9.JPG'
+        emoji: '☁️'
       },
       {
         id: 3,
         class: 'mountains-layer',
         speed: 0.5,
-        image: '/images/backgrounds/parallax-layers-9.JPG'
+        emoji: '🏔️'
       },
       {
         id: 4,
         class: 'trees-layer',
         speed: 0.8,
-        image: '/images/backgrounds/parallax-layers-9.JPG'
+        emoji: '🌳'
       }
     ])
     
@@ -136,13 +136,14 @@ export default {
       const baseStyle = {
         transform: `translateX(${mouseX.value * layer.speed * 20}px) translateY(${mouseY.value * layer.speed * 10}px)`
       }
-      
-      if (layer.image) {
-        baseStyle.backgroundImage = `url(${layer.image})`
-        baseStyle.backgroundSize = 'cover'
-        baseStyle.backgroundPosition = 'center'
+
+      if (layer.emoji) {
+        baseStyle.fontSize = '8rem'
+        baseStyle.display = 'flex'
+        baseStyle.alignItems = 'center'
+        baseStyle.justifyContent = 'center'
       }
-      
+
       return baseStyle
     }
     

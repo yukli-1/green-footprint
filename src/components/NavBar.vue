@@ -330,7 +330,7 @@ export default {
 .logo-text {
   font-size: 1.3rem;
   font-weight: bold;
-  color: var(--accent, #27ae60);
+  color: #2c3e50;
 }
 
 .nav-menu {

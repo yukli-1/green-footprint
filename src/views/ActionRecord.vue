@@ -17,7 +17,7 @@
             @click="selectType(type)"
           >
             <div class="type-icon">
-              <img :src="getActionImage(type.id)" :alt="type.name" class="action-icon-image"/>
+              <span class="emoji-icon">{{ type.icon }}</span>
             </div>
             <h3>{{ type.name }}</h3>
             <p>{{ type.description }}</p>
@@ -248,14 +248,14 @@ export default {
 
     const getActionImage = (typeId) => {
       const actionImages = {
-        'recycling': '/images/scenarios/recycling-9.JPG',
-        'green_transport': '/images/scenarios/green-transport-9.JPG',
-        'water_saving': '/images/scenarios/recycling-9.JPG',
-        'energy_saving': '/images/scenarios/green-transport-9.JPG',
-        'tree_planting': '/images/scenarios/recycling-9.JPG',
-        'cleanup': '/images/scenarios/green-transport-9.JPG'
+        'recycling': '/images/scenarios/recycling.svg',
+        'green_transport': '/images/scenarios/green-transport.svg',
+        'water_saving': '/images/scenarios/recycling.svg',
+        'energy_saving': '/images/scenarios/green-transport.svg',
+        'tree_planting': '/images/scenarios/recycling.svg',
+        'cleanup': '/images/scenarios/green-transport.svg'
       }
-      return actionImages[typeId] || '/images/scenarios/green-transport-9.JPG'
+      return actionImages[typeId] || '/images/scenarios/green-transport.svg'
     }
 
     return {
@@ -358,6 +358,10 @@ h2 {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.emoji-icon {
+  font-size: 2.5rem;
 }
 
 .type-card h3 {

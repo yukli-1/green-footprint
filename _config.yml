@@ -1,6 +1,0 @@
-# GitHub Pages 配置文件
-# 确保部署到 /green-footprint/ 路径
-
-theme: jekyll-theme-cayman
-title: 绿色足迹
-description: 一个基于 Vue3 的环保行动记录项目

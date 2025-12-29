@@ -7,7 +7,7 @@
       <!-- 炫酷欢迎横幅 -->
       <section class="welcome-banner">
         <div class="banner-bg">
-          <img src="/images/backgrounds/nature-premium-9.JPG" alt="高级自然背景" class="banner-image"/>
+          <div class="banner-emoji-bg">🌿🌲🌳</div>
         </div>
         <div class="banner-content">
           <h1 class="eco-title">
@@ -26,8 +26,8 @@
         
         <!-- 装饰性背景元素 -->
         <div class="decorative-elements">
-          <img src="/images/ui/decoration-leaves-9.JPG" alt="装饰叶子" class="decoration-leaves"/>
-          <img src="/images/ui/eco-pattern-9.JPG" alt="环保图案" class="decoration-pattern"/>
+          <span class="decoration-emoji">🌿</span>
+          <span class="decoration-emoji">🍃</span>
         </div>
         </div>
         <div class="banner-stats" v-if="store.user.isLoggedIn">
@@ -48,23 +48,23 @@
       <section class="feature-grid">
         <div class="feature-card" @click="navigate('/action-record')">
           <div class="feature-icon">
-            <img src="/images/icons/actions/record-action-9.JPG" alt="记录行动" class="icon-image"/>
+            <span class="emoji-icon">📝</span>
           </div>
           <h3>记录行动</h3>
           <p>记录环保行动，获取贡献值</p>
         </div>
-        
+
         <div class="feature-card" @click="navigate('/footprint-data')">
           <div class="feature-icon">
-            <img src="/images/icons/actions/data-analysis-9.JPG" alt="足迹数据" class="icon-image"/>
+            <span class="emoji-icon">📊</span>
           </div>
           <h3>足迹数据</h3>
           <p>查看环保数据统计</p>
         </div>
-        
+
         <div class="feature-card" @click="navigate('/community-challenge')">
           <div class="feature-icon">
-            <img src="/images/icons/actions/challenge-trophy-9.JPG" alt="社群挑战" class="icon-image"/>
+            <span class="emoji-icon">🏆</span>
           </div>
           <h3>社群挑战</h3>
           <p>参与环保挑战活动</p>
@@ -251,10 +251,14 @@ export default {
   z-index: 0;
 }
 
-.banner-image {
+.banner-emoji-bg {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8rem;
+  background: linear-gradient(135deg, rgba(39, 174, 96, 0.1), rgba(46, 204, 113, 0.1));
 }
 
 .banner-content {
@@ -330,22 +334,20 @@ export default {
   opacity: 0.1;
 }
 
-.decoration-leaves {
+.decoration-emoji {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 80px;
-  height: 40px;
-  opacity: 0.6;
+  font-size: 2.5rem;
+  opacity: 0.4;
 }
 
-.decoration-pattern {
-  position: absolute;
+.decoration-emoji:first-child {
+  top: 10px;
+  right: 10px;
+}
+
+.decoration-emoji:last-child {
   bottom: 10px;
   left: 10px;
-  width: 60px;
-  height: 60px;
-  opacity: 0.4;
 }
 
 .leaf-fall {
@@ -442,10 +444,8 @@ export default {
   border-radius: 14px;
 }
 
-.icon-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+.emoji-icon {
+  font-size: 2.5rem;
 }
 
 .feature-card:hover .feature-icon {

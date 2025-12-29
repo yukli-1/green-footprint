@@ -36,8 +36,9 @@
         <h2>📍 足迹分布图</h2>
         <div class="map-container">
           <div class="map-visualization">
-            <div
-              v-for="(location, index) in uniqueLocations"
+            <div class="map-emoji-bg">🗺️</div>
+            <div 
+              v-for="(location, index) in uniqueLocations" 
               :key="index"
               class="location-pin"
               :style="getLocationStyle(index)"
@@ -345,24 +346,24 @@ export default {
 
     const getPlantImage = (emojiOrName) => {
       const plantImages = {
-        '🌻': '/images/plants/sunflower-9.JPG',
-        'sunflower': '/images/plants/sunflower-9.JPG',
-        'sunflower.svg': '/images/plants/sunflower-9.JPG',
-        '🌹': '/images/plants/rose-9.JPG',
-        'rose': '/images/plants/rose-9.JPG',
-        'rose.svg': '/images/plants/rose-9.JPG',
-        '🌵': '/images/plants/cactus-9.JPG',
-        'cactus': '/images/plants/cactus-9.JPG',
-        'cactus.svg': '/images/plants/cactus-9.JPG',
-        '🌸': '/images/plants/cherry-blossom-9.JPG',
-        '🎋': '/images/plants/bamboo-9.JPG',
-        '樱花': '/images/plants/cherry-blossom-9.JPG',
-        '樱花树': '/images/plants/cherry-blossom-9.JPG',
-        'cherry': '/images/plants/cherry-blossom-9.JPG',
-        'cherry-blossom.svg': '/images/plants/cherry-blossom-9.JPG',
-        '竹子': '/images/plants/bamboo-9.JPG',
-        'bamboo': '/images/plants/bamboo-9.JPG',
-        'bamboo.svg': '/images/plants/bamboo-9.JPG'
+        '🌻': '/images/plants/sunflower.svg',
+        'sunflower': '/images/plants/sunflower.svg',
+        'sunflower.svg': '/images/plants/sunflower.svg',
+        '🌹': '/images/plants/rose.svg',
+        'rose': '/images/plants/rose.svg',
+        'rose.svg': '/images/plants/rose.svg',
+        '🌵': '/images/plants/cactus.svg',
+        'cactus': '/images/plants/cactus.svg',
+        'cactus.svg': '/images/plants/cactus.svg',
+        '🌸': '/images/plants/cherry-blossom.svg',
+        '🎋': '/images/plants/bamboo.svg',
+        '樱花': '/images/plants/cherry-blossom.svg',
+        '樱花树': '/images/plants/cherry-blossom.svg',
+        'cherry': '/images/plants/cherry-blossom.svg',
+        'cherry-blossom.svg': '/images/plants/cherry-blossom.svg',
+        '竹子': '/images/plants/bamboo.svg',
+        'bamboo': '/images/plants/bamboo.svg',
+        'bamboo.svg': '/images/plants/bamboo.svg'
       }
 
       const key = (emojiOrName || '').toString().trim()
@@ -383,12 +384,12 @@ export default {
 
     const getBadgeImage = (badgeId) => {
       const badgeImages = {
-        1: '/images/badges/bronze-eco-warrior-9.JPG',
-        2: '/images/badges/bronze-eco-warrior-9.JPG',
-        3: '/images/badges/silver-eco-champion-9.JPG',
-        4: '/images/badges/gold-eco-master-9.JPG'
+        1: '/images/badges/bronze-eco-warrior.svg',
+        2: '/images/badges/bronze-eco-warrior.svg', 
+        3: '/images/badges/silver-eco-champion.svg',
+        4: '/images/badges/gold-eco-master.svg'
       }
-      return badgeImages[badgeId] || '/images/badges/bronze-eco-warrior-9.JPG'
+      return badgeImages[badgeId] || '/images/badges/bronze-eco-warrior.svg'
     }
 
     return {
@@ -411,6 +412,11 @@ export default {
 <style scoped>
 .footprint-data {
   min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding-bottom: 40px;
+}
+.footprint-data {
+  min-height: 100vh;
   background: transparent;
   padding-bottom: 40px;
 }
@@ -427,6 +433,12 @@ export default {
   z-index: 1;
 }
 
+h1 {
+  text-align: center;
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
 h1 {
   text-align: center;
   color: var(--text-heading, #123e2e);
@@ -475,6 +487,17 @@ h2 {
   left: 0;
   right: 0;
   height: 3px;
+  background: linear-gradient(90deg, #27ae60, #3498db);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
   transform: scaleX(0);
   transition: transform 0.3s ease;
@@ -494,6 +517,12 @@ h2 {
   margin-bottom: 15px;
 }
 
+.stat-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #27ae60;
+  margin-bottom: 5px;
+}
 .stat-value {
   font-size: 2rem;
   font-weight: bold;
@@ -520,12 +549,30 @@ h2 {
   box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.2);
 }
 
-.map-background {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.map-emoji-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 6rem;
+  background: linear-gradient(135deg, rgba(39, 174, 96, 0.08), rgba(46, 204, 113, 0.08));
+  z-index: 0;
 }
 
+.map-visualization::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(39, 174, 96, 0.3) 0%, rgba(52, 152, 219, 0.3) 100%);
+  mix-blend-mode: multiply;
+}
 .map-visualization::before {
   content: '';
   position: absolute;
@@ -596,6 +643,13 @@ h2 {
 }
 
 .location-count {
+  background: #3498db;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+.location-count {
   background: var(--accent-2);
   color: white;
   padding: 2px 8px;
@@ -632,6 +686,16 @@ h2 {
   left: -50%;
   width: 200%;
   height: 200%;
+  background: radial-gradient(circle, rgba(39, 174, 96, 0.1) 0%, transparent 70%);
+  animation: plantGlow 4s ease-in-out infinite;
+}
+.plant-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
   background: radial-gradient(circle, rgba(39, 174, 96, 0.12) 0%, transparent 70%);
   animation: plantGlow 4s ease-in-out infinite;
 }
@@ -649,6 +713,12 @@ h2 {
   align-items: center;
   justify-content: center;
   animation: plantGrow 3s ease-in-out infinite alternate;
+}
+
+.plant-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .plant-image {
@@ -699,12 +769,26 @@ h2 {
 .water-btn {
   width: 100%;
   padding: 8px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.water-btn {
+  width: 100%;
+  padding: 8px;
   background: var(--accent-2);
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s ease;
+}
+
+.water-btn:hover {
+  background: #219a52;
 }
 
 .water-btn:hover {
@@ -743,6 +827,11 @@ h2 {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.plant-emoji {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
 }
 
 .plant-item h4 {
@@ -824,6 +913,11 @@ h2 {
 
 .bar-fill {
   height: 100%;
+  background: linear-gradient(90deg, #27ae60, #2ecc71);
+  transition: width 0.5s ease;
+}
+.bar-fill {
+  height: 100%;
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
   transition: width 0.5s ease;
 }
@@ -850,6 +944,13 @@ h2 {
   flex: 1;
 }
 
+.trend-bar {
+  width: 30px;
+  background: linear-gradient(180deg, #3498db, #2980b9);
+  border-radius: 5px 5px 0 0;
+  margin-bottom: 10px;
+  transition: height 0.5s ease;
+}
 .trend-bar {
   width: 30px;
   background: linear-gradient(180deg, var(--accent-2), #219a52);

@@ -20,8 +20,11 @@
 
     <div class="scenario-content" v-if="currentScenario">
       <div class="scenario-intro">
-        <div class="scenario-visual">
+        <div class="scenario-visual" v-if="currentScenario.image">
           <img :src="currentScenario.image" :alt="currentScenario.name">
+        </div>
+        <div class="scenario-visual" v-else class="emoji-visual">
+          <span class="emoji-large">{{ currentScenario.icon }}</span>
         </div>
         <div class="scenario-info">
           <h3>{{ currentScenario.name }}</h3>
@@ -116,8 +119,11 @@
           :class="{ locked: scenario.locked }"
           @click="exploreScenario(scenario)"
         >
-          <div class="explore-image">
+          <div class="explore-image" v-if="scenario.image">
             <img :src="scenario.image" :alt="scenario.name">
+          </div>
+          <div class="explore-image" v-else class="explore-emoji">
+            <span>{{ scenario.icon }}</span>
             <div class="explore-overlay">
               <span v-if="scenario.locked">🔒</span>
               <span v-else>🚀</span>
@@ -180,7 +186,7 @@ export default {
         name: '家庭环保',
         icon: '🏠',
         description: '打造绿色家庭，从日常小事做起',
-        image: '/images/scenarios/recycling-9.JPG',
+        image: null,
         difficulty: '简单',
         duration: '日常',
         impact: '高'
@@ -190,7 +196,7 @@ export default {
         name: '办公环保',
         icon: '🏢',
         description: '绿色办公，低碳工作',
-        image: '/images/scenarios/green-transport-9.JPG',
+        image: null,
         difficulty: '中等',
         duration: '工作日',
         impact: '中'
@@ -200,7 +206,7 @@ export default {
         name: '校园环保',
         icon: '🏫',
         description: '建设绿色校园，培养环保意识',
-        image: '/images/scenarios/recycling-9.JPG',
+        image: null,
         difficulty: '简单',
         duration: '学期',
         impact: '高'
@@ -210,7 +216,7 @@ export default {
         name: '社区环保',
         icon: '🏘️',
         description: '共建绿色社区，共享美好生活',
-        image: '/images/scenarios/green-transport-9.JPG',
+        image: null,
         difficulty: '中等',
         duration: '长期',
         impact: '高'
@@ -221,7 +227,7 @@ export default {
       home: {
         name: '家庭环保',
         description: '通过改变生活习惯，让家庭成为环保的第一站',
-        image: '/images/scenarios/recycling-9.JPG',
+        image: null,
         difficulty: '简单',
         duration: '日常',
         impact: '高',
@@ -272,7 +278,7 @@ export default {
       office: {
         name: '办公环保',
         description: '在工作场所践行环保理念，打造绿色办公环境',
-        image: '/images/scenarios/green-transport-9.JPG',
+        image: null,
         difficulty: '中等',
         duration: '工作日',
         impact: '中',
@@ -318,7 +324,7 @@ export default {
       school: {
         name: '校园环保',
         description: '在学校开展环保活动，培养环保意识',
-        image: '/images/scenarios/recycling-9.JPG',
+        image: null,
         difficulty: '简单',
         duration: '学期',
         impact: '高',
@@ -364,7 +370,7 @@ export default {
       community: {
         name: '社区环保',
         description: '在社区中推广环保理念，共建绿色家园',
-        image: '/images/scenarios/green-transport-9.JPG',
+        image: null,
         difficulty: '中等',
         duration: '长期',
         impact: '高',
@@ -581,6 +587,20 @@ export default {
   height: 200px;
   object-fit: cover;
   border-radius: 15px;
+}
+
+.emoji-visual {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(39, 174, 96, 0.1), rgba(46, 204, 113, 0.1));
+  border-radius: 15px;
+}
+
+.emoji-large {
+  font-size: 5rem;
 }
 
 .scenario-info h3 {
@@ -856,6 +876,14 @@ export default {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.explore-emoji {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  background: linear-gradient(135deg, rgba(39, 174, 96, 0.08), rgba(46, 204, 113, 0.08));
 }
 
 .explore-overlay {
