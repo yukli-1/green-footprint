@@ -1,0 +1,108 @@
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="goldGradient">
+      <stop offset="0%" style="stop-color:#FFEB3B;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFA000;stop-opacity:1" />
+    </radialGradient>
+    <linearGradient id="crownGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFF59D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFC107;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-opacity="0.5"/>
+    </filter>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- 外圈 -->
+  <circle cx="50" cy="50" r="45" fill="url(#goldGradient)" filter="url(#shadow)" stroke="#FF8F00" stroke-width="3"/>
+  
+  <!-- 内圈光芒 -->
+  <g transform="translate(50, 50)">
+    <g id="ray">
+      <line x1="0" y1="-35" x2="0" y2="-40" stroke="#FFF59D" stroke-width="2" opacity="0.8">
+        <animate attributeName="opacity" values="0.4;0.9;0.4" dur="2s" repeatCount="indefinite"/>
+      </line>
+    </g>
+    <use href="#ray" transform="rotate(30)"/>
+    <use href="#ray" transform="rotate(60)"/>
+    <use href="#ray" transform="rotate(90)"/>
+    <use href="#ray" transform="rotate(120)"/>
+    <use href="#ray" transform="rotate(150)"/>
+    <use href="#ray" transform="rotate(180)"/>
+    <use href="#ray" transform="rotate(210)"/>
+    <use href="#ray" transform="rotate(240)"/>
+    <use href="#ray" transform="rotate(270)"/>
+    <use href="#ray" transform="rotate(300)"/>
+    <use href="#ray" transform="rotate(330)"/>
+  </g>
+  
+  <!-- 皇冠 -->
+  <g transform="translate(50, 25)">
+    <path d="M-20,10 L-15,-5 L-8,0 L0,-8 L8,0 L15,-5 L20,10 Z" 
+          fill="url(#crownGradient)" stroke="#FF8F00" stroke-width="1" filter="url(#glow)"/>
+    
+    <!-- 皇冠宝石 -->
+    <circle cx="-15" cy="-2" r="3" fill="#E91E63" filter="url(#glow)"/>
+    <circle cx="0" cy="-5" r="3" fill="#2196F3" filter="url(#glow)"/>
+    <circle cx="15" cy="-2" r="3" fill="#4CAF50" filter="url(#glow)"/>
+    
+    <!-- 皇冠装饰线 -->
+    <line x1="-20" y1="10" x2="20" y2="10" stroke="#FF8F00" stroke-width="1"/>
+  </g>
+  
+  <!-- 中央环保树 -->
+  <g transform="translate(50, 55)">
+    <!-- 树干 -->
+    <rect x="-3" y="0" width="6" height="12" fill="#8D6E63"/>
+    
+    <!-- 树冠 -->
+    <circle cx="0" cy="-5" r="12" fill="#4CAF50" opacity="0.9"/>
+    <circle cx="-6" cy="-8" r="8" fill="#66BB6A" opacity="0.8"/>
+    <circle cx="6" cy="-8" r="8" fill="#66BB6A" opacity="0.8"/>
+    <circle cx="0" cy="-10" r="6" fill="#81C784" opacity="0.7"/>
+    
+    <!-- 果实 -->
+    <circle cx="-4" cy="-6" r="2" fill="#F44336"/>
+    <circle cx="5" cy="-4" r="2" fill="#FF9800"/>
+    <circle cx="0" cy="-8" r="2" fill="#E91E63"/>
+  </g>
+  
+  <!-- 环保环绕符号 -->
+  <g transform="translate(50, 50)" stroke="#4CAF50" stroke-width="1.5" fill="none" opacity="0.7">
+    <path d="M-25,0 Q-25,-8 -17,-8 L-8,-8 L-10,-11 M-8,-8 L-10,-5"/>
+    <path d="M25,0 Q25,8 17,8 L8,8 L10,11 M8,8 L10,5"/>
+    <path d="M0,-25 Q8,-25 8,-17 L8,-8 L11,-10 M8,-8 L5,-10"/>
+  </g>
+  
+  <!-- 等级标识 -->
+  <text x="50" y="85" text-anchor="middle" fill="#5D4037" font-size="11" font-weight="bold" font-family="Arial, sans-serif">
+    黄金大师
+  </text>
+  
+  <!-- 动态光环 -->
+  <circle cx="50" cy="50" r="42" fill="none" stroke="#FFD700" stroke-width="2" opacity="0.5">
+    <animate attributeName="r" values="42;46;42" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.5;0.9;0.5" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- 闪烁星星 -->
+  <g transform="translate(50, 50)">
+    <g id="sparkle">
+      <path d="M0,-3 L1,-1 L3,0 L1,1 L0,3 L-1,1 L-3,0 L-1,-1 Z" fill="white">
+        <animate attributeName="opacity" values="0;1;0" dur="1.5s" repeatCount="indefinite"/>
+      </path>
+    </g>
+    <use href="#sparkle" transform="translate(25, -20)"/>
+    <use href="#sparkle" transform="translate(-25, -20)"/>
+    <use href="#sparkle" transform="translate(30, 15)"/>
+    <use href="#sparkle" transform="translate(-30, 15)"/>
+  </g>
+</svg>

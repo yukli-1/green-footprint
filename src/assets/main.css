@@ -1,0 +1,104 @@
+@import './base.css';
+@import './desktop.css';
+@import './images.css';
+@import './animations.css';
+
+/* 桌面端全局样式优化 */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, var(--gf-bg1, #eafaf1) 0%, var(--gf-bg2, #dff7e8) 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+#app {
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+/* 桌面端滚动条美化 */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+
+/* 桌面端选择器样式 */
+
+::selection {
+    background-color: rgba(39, 174, 96, 0.3);
+    color: #2c3e50;
+}
+
+
+/* 桌面端焦点样式 */
+
+:focus-visible {
+    outline: 2px solid var(--accent-2, #2ecc71);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+
+/* 桌面端链接样式 */
+
+a {
+    text-decoration: none;
+    color: var(--accent, #27ae60);
+    transition: all 0.3s ease;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+a:hover {
+    background-color: color-mix(in srgb, var(--accent, #27ae60) 20%, transparent);
+    transform: translateY(-1px);
+}
+
+
+/* 桌面端工具提示基础样式 */
+
+.tooltip {
+    position: relative;
+}
+
+.tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.tooltip:hover::after {
+    opacity: 1;
+}

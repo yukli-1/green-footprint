@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>背景调试</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            transition: background-image 0.5s ease-in-out;
+            background-color: #f0f0f0;
+        }
+        .debug-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 20px auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background: #3498db;
+            color: white;
+            font-size: 14px;
+        }
+        .btn:hover {
+            background: #2980b9;
+        }
+        .log {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="debug-container">
+        <h2>背景显示调试工具</h2>
+        
+        <button class="btn" onclick="testExternalPath()">📁 测试外部SVG路径</button>
+        <button class="btn" onclick="testEmbeddedSVG()">🎨 测试内嵌SVG</button>
+        <button class="btn" onclick="testDirectApply()">⚡ 直接应用背景</button>
+        <button class="btn" onclick="clearLogs()">🗑️ 清除日志</button>
+        
+        <div id="log" class="log">调试日志将显示在这里...</div>
+        
+        <div style="margin-top: 20px;">
+            <h4>当前背景状态：</h4>
+            <div id="status">检查中...</div>
+        </div>
+    </div>
+
+    <script>
+        function log(message) {
+            const logDiv = document.getElementById('log')
+            const timestamp = new Date().toLocaleTimeString()
+            logDiv.innerHTML += `[${timestamp}] ${message}<br>`
+            logDiv.scrollTop = logDiv.scrollHeight
+        }
+        
+        function updateStatus() {
+            const status = document.getElementById('status')
+            const computedStyle = window.getComputedStyle(document.body)
+            const bgImage = computedStyle.backgroundImage
+            const bgColor = computedStyle.backgroundColor
+            
+            status.innerHTML = `
+                <strong>背景图片:</strong> ${bgImage || 'none'}<br>
+                <strong>背景颜色:</strong> ${bgColor}<br>
+                <strong>背景尺寸:</strong> ${computedStyle.backgroundSize}<br>
+                <strong>背景位置:</strong> ${computedStyle.backgroundPosition}
+            `
+        }
+        
+        function testExternalPath() {
+            log('开始测试所有外部SVG路径...')
+            
+            const backgrounds = [
+                { name: '森林风光', paths: [
+                    '/images/heroes/forest-hero.svg',
+                    './images/heroes/forest-hero.svg',
+                    '../public/images/heroes/forest-hero.svg',
+                    './public/images/heroes/forest-hero.svg'
+                ]},
+                { name: '渐变环保', paths: [
+                    '/images/backgrounds/gradient-eco.svg',
+                    './images/backgrounds/gradient-eco.svg',
+                    '../public/images/backgrounds/gradient-eco.svg',
+                    './public/images/backgrounds/gradient-eco.svg'
+                ]},
+                { name: '粒子星空', paths: [
+                    '/images/backgrounds/particle-field.svg',
+                    './images/backgrounds/particle-field.svg',
+                    '../public/images/backgrounds/particle-field.svg',
+                    './public/images/backgrounds/particle-field.svg'
+                ]},
+                { name: '几何生态', paths: [
+                    '/images/backgrounds/geometric-eco.svg',
+                    './images/backgrounds/geometric-eco.svg',
+                    '../public/images/backgrounds/geometric-eco.svg',
+                    './public/images/backgrounds/geometric-eco.svg'
+                ]},
+                { name: '自然精华', paths: [
+                    '/images/backgrounds/nature-premium.svg',
+                    './images/backgrounds/nature-premium.svg',
+                    '../public/images/backgrounds/nature-premium.svg',
+                    './public/images/backgrounds/nature-premium.svg'
+                ]}
+            ]
+            
+            let bgIndex = 0
+            
+            function testNextBackground() {
+                if (bgIndex >= backgrounds.length) {
+                    log('✓ 所有背景测试完成')
+                    return
+                }
+                
+                const bg = backgrounds[bgIndex]
+                let pathIndex = 0
+                
+                function testNextPath() {
+                    if (pathIndex >= bg.paths.length) {
+                        log(`✗ ${bg.name} 所有路径都失败`)
+                        bgIndex++
+                        setTimeout(testNextBackground, 100)
+                        return
+                    }
+                    
+                    const path = bg.paths[pathIndex]
+                    log(`测试 ${bg.name} 路径 ${pathIndex + 1}: ${path}`)
+                    
+                    const img = new Image()
+                    img.onload = function() {
+                        log(`✓ ${bg.name} 路径 ${pathIndex + 1} 成功: ${path}`)
+                        document.body.style.backgroundImage = `url(${path})`
+                        updateStatus()
+                        
+                        // 测试成功，继续下一个背景
+                        bgIndex++
+                        setTimeout(testNextBackground, 1000)
+                    }
+                    
+                    img.onerror = function() {
+                        log(`✗ ${bg.name} 路径 ${pathIndex + 1} 失败: ${path}`)
+                        pathIndex++
+                        setTimeout(testNextPath, 100)
+                    }
+                    
+                    img.src = path
+                }
+                
+                testNextPath()
+            }
+            
+            testNextBackground()
+        }
+        
+        function testEmbeddedSVG() {
+            log('开始测试内嵌SVG...')
+            
+            const svgData = `
+                <svg width="1920" height="1080" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="testGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#764ba2;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#f093fb;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="1920" height="1080" fill="url(#testGrad)" />
+                    <circle cx="500" cy="300" r="100" fill="rgba(255,255,255,0.3)" />
+                    <text x="960" y="540" font-family="Arial" font-size="48" fill="white" text-anchor="middle">测试背景</text>
+                </svg>
+            `
+            
+            const encodedSvg = encodeURIComponent(svgData)
+            const dataUrl = `data:image/svg+xml,${encodedSvg}`
+            
+            log(`应用内嵌SVG背景...`)
+            document.body.style.backgroundImage = `url(${dataUrl})`
+            updateStatus()
+            
+            setTimeout(() => {
+                log('✓ 内嵌SVG背景应用完成')
+            }, 100)
+        }
+        
+        function testDirectApply() {
+            log('开始直接应用背景测试...')
+            
+            // 测试纯色背景
+            document.body.style.backgroundImage = ''
+            document.body.style.backgroundColor = '#3498db'
+            log('✓ 应用纯色背景完成')
+            updateStatus()
+            
+            setTimeout(() => {
+                // 测试渐变背景
+                document.body.style.backgroundImage = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+                document.body.style.backgroundColor = ''
+                log('✓ 应用CSS渐变背景完成')
+                updateStatus()
+            }, 1000)
+            
+            setTimeout(() => {
+                // 测试外部图片
+                document.body.style.backgroundImage = 'url(https://via.placeholder.com/1920x1080/667eea/ffffff?text=Test+Background)'
+                log('✓ 应用外部图片背景完成')
+                updateStatus()
+            }, 2000)
+        }
+        
+        function clearLogs() {
+            document.getElementById('log').innerHTML = '日志已清除...'
+        }
+        
+        // 初始化
+        window.onload = function() {
+            log('页面加载完成，开始调试...')
+            updateStatus()
+            
+            // 每秒更新状态
+            setInterval(updateStatus, 1000)
+        }
+    </script>
+</body>
+</html>

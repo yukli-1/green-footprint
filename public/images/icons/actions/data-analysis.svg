@@ -1,0 +1,47 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2196F3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1565C0;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  
+  <!-- 背景圆 -->
+  <circle cx="32" cy="32" r="28" fill="white" stroke="url(#blueGradient)" stroke-width="2" filter="url(#shadow)"/>
+  
+  <!-- 地球图标 -->
+  <g transform="translate(32, 32)">
+    <!-- 地球主体 -->
+    <circle cx="0" cy="0" r="18" fill="#E3F2FD" stroke="url(#blueGradient)" stroke-width="2"/>
+    
+    <!-- 大陆轮廓 -->
+    <path d="M-12,-8 Q-8,-12 -4,-10 T4,-8 Q8,-6 10,-2 T8,4 Q4,6 0,8 T-8,6 Q-12,4 -14,0 T-12,-8" 
+          fill="#4CAF50" opacity="0.7"/>
+    <path d="M2,-10 Q6,-8 8,-4 T6,2 Q4,4 0,3" fill="#66BB6A" opacity="0.6"/>
+    
+    <!-- 经纬线 -->
+    <ellipse cx="0" cy="0" rx="18" ry="8" fill="none" stroke="#1976D2" stroke-width="0.5" opacity="0.4"/>
+    <ellipse cx="0" cy="0" rx="18" ry="6" fill="none" stroke="#1976D2" stroke-width="0.5" opacity="0.4"/>
+    <line x1="-18" y1="0" x2="18" y2="0" stroke="#1976D2" stroke-width="0.5" opacity="0.4"/>
+    <line x1="0" y1="-18" x2="0" y2="18" stroke="#1976D2" stroke-width="0.5" opacity="0.4"/>
+    
+    <!-- 数据点 -->
+    <circle cx="-6" cy="-4" r="2" fill="#FF5722"/>
+    <circle cx="4" cy="2" r="2" fill="#FF9800"/>
+    <circle cx="8" cy="-6" r="2" fill="#4CAF50"/>
+    <circle cx="-2" cy="6" r="2" fill="#9C27B0"/>
+    
+    <!-- 数据连线 -->
+    <path d="M-6,-4 L4,2 L8,-6" stroke="#FF5722" stroke-width="1" fill="none" opacity="0.6"/>
+    <path d="M4,2 L-2,6" stroke="#FF9800" stroke-width="1" fill="none" opacity="0.6"/>
+  </g>
+  
+  <!-- 动画脉冲效果 -->
+  <circle cx="32" cy="32" r="30" fill="none" stroke="url(#blueGradient)" stroke-width="1" opacity="0">
+    <animate attributeName="r" values="28;35;28" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.5;0;0.5" dur="3s" repeatCount="indefinite"/>
+  </circle>
+</svg>
