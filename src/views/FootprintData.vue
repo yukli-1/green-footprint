@@ -36,9 +36,8 @@
         <h2>📍 足迹分布图</h2>
         <div class="map-container">
           <div class="map-visualization">
-            <img src="/images/backgrounds/city-map.svg" alt="城市地图" class="map-background"/>
-            <div 
-              v-for="(location, index) in uniqueLocations" 
+            <div
+              v-for="(location, index) in uniqueLocations"
               :key="index"
               class="location-pin"
               :style="getLocationStyle(index)"
