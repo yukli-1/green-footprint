@@ -411,11 +411,6 @@ export default {
 <style scoped>
 .footprint-data {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding-bottom: 40px;
-}
-.footprint-data {
-  min-height: 100vh;
   background: transparent;
   padding-bottom: 40px;
 }
@@ -432,12 +427,6 @@ export default {
   z-index: 1;
 }
 
-h1 {
-  text-align: center;
-  color: white;
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-}
 h1 {
   text-align: center;
   color: var(--text-heading, #123e2e);
@@ -486,17 +475,6 @@ h2 {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #27ae60, #3498db);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
-.stat-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
   transform: scaleX(0);
   transition: transform 0.3s ease;
@@ -516,12 +494,6 @@ h2 {
   margin-bottom: 15px;
 }
 
-.stat-value {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #27ae60;
-  margin-bottom: 5px;
-}
 .stat-value {
   font-size: 2rem;
   font-weight: bold;
@@ -554,16 +526,6 @@ h2 {
   object-fit: cover;
 }
 
-.map-visualization::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(39, 174, 96, 0.3) 0%, rgba(52, 152, 219, 0.3) 100%);
-  mix-blend-mode: multiply;
-}
 .map-visualization::before {
   content: '';
   position: absolute;
@@ -634,13 +596,6 @@ h2 {
 }
 
 .location-count {
-  background: #3498db;
-  color: white;
-  padding: 2px 8px;
-  border-radius: 12px;
-  font-size: 0.8rem;
-}
-.location-count {
   background: var(--accent-2);
   color: white;
   padding: 2px 8px;
@@ -677,16 +632,6 @@ h2 {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(39, 174, 96, 0.1) 0%, transparent 70%);
-  animation: plantGlow 4s ease-in-out infinite;
-}
-.plant-card::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
   background: radial-gradient(circle, rgba(39, 174, 96, 0.12) 0%, transparent 70%);
   animation: plantGlow 4s ease-in-out infinite;
 }
@@ -704,12 +649,6 @@ h2 {
   align-items: center;
   justify-content: center;
   animation: plantGrow 3s ease-in-out infinite alternate;
-}
-
-.plant-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
 }
 
 .plant-image {
@@ -760,26 +699,12 @@ h2 {
 .water-btn {
   width: 100%;
   padding: 8px;
-  background: #3498db;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-.water-btn {
-  width: 100%;
-  padding: 8px;
   background: var(--accent-2);
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s ease;
-}
-
-.water-btn:hover {
-  background: #219a52;
 }
 
 .water-btn:hover {
@@ -818,11 +743,6 @@ h2 {
   width: 100%;
   height: 100%;
   object-fit: contain;
-}
-
-.plant-emoji {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
 }
 
 .plant-item h4 {
@@ -904,11 +824,6 @@ h2 {
 
 .bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, #27ae60, #2ecc71);
-  transition: width 0.5s ease;
-}
-.bar-fill {
-  height: 100%;
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
   transition: width 0.5s ease;
 }
@@ -935,13 +850,6 @@ h2 {
   flex: 1;
 }
 
-.trend-bar {
-  width: 30px;
-  background: linear-gradient(180deg, #3498db, #2980b9);
-  border-radius: 5px 5px 0 0;
-  margin-bottom: 10px;
-  transition: height 0.5s ease;
-}
 .trend-bar {
   width: 30px;
   background: linear-gradient(180deg, var(--accent-2), #219a52);
