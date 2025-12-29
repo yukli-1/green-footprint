@@ -36,7 +36,7 @@
         <h2>📍 足迹分布图</h2>
         <div class="map-container">
           <div class="map-visualization">
-            <img src="/green-footprint/images/new/9.jpg" alt="足迹地图" class="map-background"/>
+            <img src="/images/new/9.jpg" alt="足迹地图" class="map-background"/>
             <div 
               v-for="(location, index) in uniqueLocations" 
               :key="index"
