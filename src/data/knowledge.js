@@ -3,7 +3,7 @@ export default [{
         icon: '♻️',
         title: '垃圾分类指南',
         summary: '了解正确的垃圾分类方法，提高回收利用率',
-        image: '/images/ui/knowledge-recycling.svg',
+        image: '/images/scenarios/recycling.svg',
         contentHtml: `
       <h3>基础分类</h3>
       <p>将垃圾分为可回收物、有害垃圾、湿垃圾（厨余）、干垃圾（其他）四类。</p>
@@ -24,7 +24,7 @@ export default [{
         icon: '🚲',
         title: '绿色出行方式',
         summary: '探索低碳环保的出行选择，减少碳排放',
-        image: '/images/ui/knowledge-transport.svg',
+        image: '/images/scenarios/green-transport.svg',
         contentHtml: `
       <h3>短途优先步行或骑行</h3>
       <p>1–3 公里优先选择步行或骑行，既锻炼也低碳。</p>
@@ -39,7 +39,7 @@ export default [{
         icon: '💧',
         title: '节约用水技巧',
         summary: '日常生活中的节水方法，保护水资源',
-        image: '/images/ui/knowledge-water.svg',
+        image: '/images/scenarios/water-saving.svg',
         contentHtml: `
       <h3>家庭节水</h3>
       <p>修复滴水水龙头，使用节水型装置（如节水马桶、节水花洒）。</p>
