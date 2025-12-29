@@ -1,0 +1,55 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFC107;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF9800;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- 背景圆 -->
+  <circle cx="32" cy="32" r="28" fill="white" stroke="#FFC107" stroke-width="2" filter="url(#shadow)"/>
+  
+  <!-- 奖杯主体 -->
+  <g transform="translate(32, 28)">
+    <!-- 奖杯杯体 -->
+    <path d="M-12,-12 Q-14,-8 -12,-4 L-8,4 L8,4 L12,-4 Q14,-8 12,-12 Z" 
+          fill="url(#goldGradient)" stroke="#FF8F00" stroke-width="1"/>
+    
+    <!-- 奖杯把手 -->
+    <path d="M-12,-8 Q-18,-6 -18,0 Q-18,4 -12,2" 
+          fill="none" stroke="url(#goldGradient)" stroke-width="2" stroke-linecap="round"/>
+    <path d="M12,-8 Q18,-6 18,0 Q18,4 12,2" 
+          fill="none" stroke="url(#goldGradient)" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- 奖杯底座 -->
+    <rect x="-10" y="4" width="20" height="3" fill="url(#goldGradient)"/>
+    <rect x="-6" y="7" width="12" height="2" fill="url(#goldGradient)"/>
+    <rect x="-8" y="9" width="16" height="4" fill="#FF8F00"/>
+    
+    <!-- 星星装饰 -->
+    <g transform="translate(0, -2)">
+      <path d="M0,-6 L1.5,-1.5 L6,-0.5 L1.5,1.5 L0,6 L-1.5,1.5 L-6,-0.5 L-1.5,-1.5 Z" 
+            fill="white" opacity="0.9"/>
+    </g>
+    
+    <!-- 环保叶子装饰 -->
+    <g transform="translate(-6, 8)">
+      <ellipse cx="0" cy="0" rx="3" ry="4" fill="#4CAF50" transform="rotate(-20)"/>
+    </g>
+    <g transform="translate(6, 8)">
+      <ellipse cx="0" cy="0" rx="3" ry="4" fill="#4CAF50" transform="rotate(20)"/>
+    </g>
+  </g>
+  
+  <!-- 光芒效果 -->
+  <g transform="translate(32, 20)" opacity="0.6">
+    <path d="M0,-12 L2,-2 L12,0 L2,2 L0,12 L-2,2 L-12,0 L-2,-2 Z" fill="white">
+      <animateTransform attributeName="transform" type="rotate" 
+                        from="0 0 0" to="360 0 0" dur="10s" repeatCount="indefinite"/>
+    </path>
+  </g>
+</svg>

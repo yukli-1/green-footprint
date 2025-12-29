@@ -1,0 +1,150 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 主渐变定义 -->
+    <radialGradient id="centerGlow" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#E8F5E8;stop-opacity:0.8" />
+      <stop offset="40%" style="stop-color:#C8E6C9;stop-opacity:0.6" />
+      <stop offset="70%" style="stop-color:#81C784;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#4CAF50;stop-opacity:0.2" />
+    </radialGradient>
+    
+    <linearGradient id="topToBottom" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E1F5FE;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#B3E5FC;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#81D4FA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4FC3F7;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="diagonalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#66BB6A;stop-opacity:0.6" />
+      <stop offset="50%" style="stop-color:#4CAF50;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#2E7D32;stop-opacity:0.3" />
+    </linearGradient>
+    
+    <!-- 纹理滤镜 -->
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" seed="1"/>
+      <feDiffuseLighting in="noise" lighting-color="white" surfaceScale="1" result="diffuseLight"/>
+      <feComposite in="diffuseLight" in2="SourceGraphic" operator="multiply"/>
+    </filter>
+    
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+    
+    <!-- 发光效果 -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- 形状定义 -->
+    <pattern id="ecoPattern" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse">
+      <circle cx="50" cy="50" r="30" fill="url(#centerGlow)" opacity="0.3"/>
+      <circle cx="150" cy="150" r="25" fill="url(#centerGlow)" opacity="0.2"/>
+      <path d="M100,0 Q200,50 150,100 T100,200 T50,100 T100,0" 
+            stroke="url(#diagonalGradient)" stroke-width="2" fill="none" opacity="0.4"/>
+      <ellipse cx="100" cy="100" rx="80" ry="60" fill="none" 
+               stroke="url(#centerGlow)" stroke-width="1" opacity="0.5"/>
+    </pattern>
+  </defs>
+  
+  <!-- 主背景层 -->
+  <rect width="1920" height="1080" fill="url(#topToBottom)"/>
+  
+  <!-- 渐变叠加层 -->
+  <rect width="1920" height="1080" fill="url(#centerGlow)" opacity="0.4"/>
+  
+  <!-- 纹理层 -->
+  <rect width="1920" height="1080" fill="url(#ecoPattern)" opacity="0.3"/>
+  
+  <!-- 对角线条装饰 -->
+  <g opacity="0.2">
+    <path d="M0,0 L480,270 L960,540 L1440,810 L1920,1080" 
+          stroke="url(#diagonalGradient)" stroke-width="2" filter="url(#blur)"/>
+    <path d="M1920,0 L1440,270 L960,540 L480,810 L0,1080" 
+          stroke="url(#diagonalGradient)" stroke-width="1" filter="url(#blur)"/>
+  </g>
+  
+  <!-- 发光圆圈装饰 -->
+  <g filter="url(#glow)">
+    <circle cx="200" cy="200" r="120" fill="none" stroke="#81C784" stroke-width="1" opacity="0.4">
+      <animate attributeName="r" values="120;140;120" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0.2;0.4" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1720" cy="880" r="100" fill="none" stroke="#4CAF50" stroke-width="1" opacity="0.3">
+      <animate attributeName="r" values="100;120;100" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;0.1;0.3" dur="8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- 动态粒子效果 -->
+  <g opacity="0.6">
+    <!-- 浮动粒子1 -->
+    <circle cx="300" cy="400" r="3" fill="#81C784" filter="url(#glow)">
+      <animateTransform attributeName="transform" type="translate" 
+                    values="300,400; 320,380; 300,400" 
+                    dur="4s" repeatCount="indefinite"/>
+    </circle>
+    
+    <circle cx="600" cy="600" r="2" fill="#66BB6A" filter="url(#glow)">
+      <animateTransform attributeName="transform" type="translate" 
+                    values="600,600; 580,620; 600,600" 
+                    dur="3s" repeatCount="indefinite"/>
+    </circle>
+    
+    <circle cx="1200" cy="300" r="4" fill="#4CAF50" filter="url(#glow)">
+      <animateTransform attributeName="transform" type="translate" 
+                    values="1200,300; 1220,320; 1200,300" 
+                    dur="5s" repeatCount="indefinite"/>
+    </circle>
+    
+    <circle cx="1500" cy="700" r="2.5" fill="#81C784" filter="url(#glow)">
+      <animateTransform attributeName="transform" type="translate" 
+                    values="1500,700; 1480,720; 1500,700" 
+                    dur="4.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- 几何形状装饰 -->
+  <g opacity="0.2">
+    <!-- 三角形 -->
+    <path d="M100,50 L200,200 L0,200 Z" fill="url(#diagonalGradient)" filter="url(#blur)"/>
+    <path d="M1800,850 L1700,950 L1900,950 Z" fill="url(#centerGlow)" filter="url(#blur)"/>
+    
+    <!-- 六边形 -->
+    <path d="M500,200 L550,230 L550,280 L500,310 L450,280 L450,230 Z" 
+          fill="none" stroke="#66BB6A" stroke-width="1" filter="url(#blur)"/>
+    <path d="M1400,600 L1450,630 L1450,680 L1400,710 L1350,680 L1350,630 Z" 
+          fill="none" stroke="#4CAF50" stroke-width="1" filter="url(#blur)"/>
+  </g>
+  
+  <!-- 波浪装饰 -->
+  <g opacity="0.3">
+    <path d="M0,900 Q480,850 960,900 T1920,900" 
+          stroke="url(#diagonalGradient)" stroke-width="2" fill="none">
+      <animate attributeName="d" 
+               values="M0,900 Q480,850 960,900 T1920,900;
+                       M0,900 Q480,950 960,900 T1920,900" 
+               dur="6s" repeatCount="indefinite"/>
+    </path>
+    <path d="M0,950 Q480,1000 960,950 T1920,950" 
+          stroke="url(#centerGlow)" stroke-width="1" fill="none">
+      <animate attributeName="d" 
+               values="M0,950 Q480,1000 960,950 T1920,950;
+                       M0,950 Q480,900 960,950 T1920,950" 
+               dur="4s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- 光束效果 -->
+  <g opacity="0.15">
+    <path d="M0,0 L200,200 L400,400" stroke="url(#centerGlow)" stroke-width="3" filter="url(#blur)"/>
+    <path d="M1920,0 L1720,200 L1520,400" stroke="url(#centerGlow)" stroke-width="3" filter="url(#blur)"/>
+    <path d="M960,0 L860,300 L760,600" stroke="url(#diagonalGradient)" stroke-width="2" filter="url(#blur)"/>
+    <path d="M960,0 L1060,300 L1160,600" stroke="url(#diagonalGradient)" stroke-width="2" filter="url(#blur)"/>
+  </g>
+</svg>

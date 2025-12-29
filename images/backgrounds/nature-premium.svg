@@ -1,0 +1,257 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 天空渐变 -->
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#98D8E8;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#B0E0E6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E0F2F1;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- 日落渐变 -->
+    <radialGradient id="sunsetGradient" cx="70%" cy="30%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:0.8" />
+      <stop offset="30%" style="stop-color:#FFA500;stop-opacity:0.6" />
+      <stop offset="60%" style="stop-color:#FF6B35;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#FF4500;stop-opacity:0.2" />
+    </radialGradient>
+    
+    <!-- 山峦渐变 -->
+    <linearGradient id="mountainGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#9F7AEA;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#7C3AED;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6D28D9;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="mountainGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#7C3AED;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6D28D9;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- 森林渐变 -->
+    <linearGradient id="forestGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#34D399;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- 水面渐变 -->
+    <linearGradient id="waterGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#5EEAD4;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#0EA5E9;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#0284C7;stop-opacity:0.6" />
+    </linearGradient>
+    
+    <!-- 滤镜 -->
+    <filter id="cloudBlur">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+    
+    <filter id="mountainBlur">
+      <feGaussianBlur stdDeviation="1"/>
+    </filter>
+    
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+    
+    <filter id="sunGlow">
+      <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- 天空背景 -->
+  <rect width="1920" height="1080" fill="url(#skyGradient)"/>
+  
+  <!-- 日落/日出效果 -->
+  <g filter="url(#sunGlow)">
+    <circle cx="1344" cy="324" r="120" fill="url(#sunsetGradient)" opacity="0.9">
+      <animate attributeName="r" values="120;130;120" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.9;0.7;0.9" dur="8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- 云朵层 -->
+  <g filter="url(#cloudBlur)" opacity="0.8">
+    <!-- 大云朵1 -->
+    <g transform="translate(300, 150)">
+      <ellipse cx="0" cy="0" rx="60" ry="30" fill="white" opacity="0.9"/>
+      <ellipse cx="-40" cy="5" rx="40" ry="25" fill="white" opacity="0.8"/>
+      <ellipse cx="40" cy="8" rx="35" ry="20" fill="white" opacity="0.7"/>
+      <ellipse cx="0" cy="-10" rx="25" ry="15" fill="white" opacity="0.6">
+        <animate attributeName="rx" values="25;30;25" dur="4s" repeatCount="indefinite"/>
+      </ellipse>
+    </g>
+    
+    <!-- 大云朵2 -->
+    <g transform="translate(1000, 100)">
+      <ellipse cx="0" cy="0" rx="80" ry="35" fill="white" opacity="0.85"/>
+      <ellipse cx="-50" cy="8" rx="45" ry="28" fill="white" opacity="0.75"/>
+      <ellipse cx="50" cy="10" rx="40" ry="22" fill="white" opacity="0.7"/>
+    </g>
+    
+    <!-- 中云朵1 -->
+    <g transform="translate(600, 200)">
+      <ellipse cx="0" cy="0" rx="45" ry="20" fill="white" opacity="0.7"/>
+      <ellipse cx="-25" cy="5" rx="25" ry="15" fill="white" opacity="0.6"/>
+      <ellipse cx="25" cy="3" rx="20" ry="12" fill="white" opacity="0.5"/>
+    </g>
+    
+    <!-- 中云朵2 -->
+    <g transform="translate(1400, 180)">
+      <ellipse cx="0" cy="0" rx="50" ry="22" fill="white" opacity="0.75"/>
+      <ellipse cx="-30" cy="6" rx="30" ry="18" fill="white" opacity="0.65"/>
+      <ellipse cx="30" cy="4" rx="25" ry="14" fill="white" opacity="0.55"/>
+    </g>
+    
+    <!-- 小云朵 -->
+    <g transform="translate(180, 80)">
+      <ellipse cx="0" cy="0" rx="25" ry="12" fill="white" opacity="0.6"/>
+      <ellipse cx="-15" cy="3" rx="15" ry="10" fill="white" opacity="0.5"/>
+    </g>
+    
+    <g transform="translate(1600, 120)">
+      <ellipse cx="0" cy="0" rx="30" ry="14" fill="white" opacity="0.65"/>
+      <ellipse cx="18" cy="4" rx="18" ry="10" fill="white" opacity="0.5"/>
+    </g>
+  </g>
+  
+  <!-- 远山层 -->
+  <g opacity="0.4" filter="url(#mountainBlur)">
+    <!-- 远山1 -->
+    <path d="M0,600 L400,400 L800,500 L1200,350 L1600,450 L1920,550 L1920,1080 L0,1080 Z" 
+          fill="url(#mountainGradient1)"/>
+    
+    <!-- 远山2 -->
+    <path d="M200,700 L500,550 L700,600 L900,450 L1100,550 L1400,500 L1700,600 L1920,700 L1920,1080 L200,1080 Z" 
+          fill="url(#mountainGradient2)" opacity="0.7"/>
+  </g>
+  
+  <!-- 中山层 -->
+  <g opacity="0.7" filter="url(#mountainBlur)">
+    <!-- 中山1 -->
+    <path d="M0,800 L300,600 L600,650 L900,550 L1200,600 L1500,550 L1800,650 L1920,750 L1920,1080 L0,1080 Z" 
+          fill="url(#mountainGradient2)"/>
+    
+    <!-- 中山2 -->
+    <path d="M400,900 L700,750 L1000,700 L1300,750 L1600,700 L1920,850 L1920,1080 L400,1080 Z" 
+          fill="url(#forestGradient)" opacity="0.8"/>
+  </g>
+  
+  <!-- 森林层 -->
+  <g opacity="0.6">
+    <!-- 森林组1 -->
+    <g id="treeGroup">
+      <ellipse cx="0" cy="0" rx="8" ry="25" fill="#228B22"/>
+      <ellipse cx="-15" cy="-20" rx="12" ry="18" fill="#2E8B57"/>
+      <ellipse cx="15" cy="-18" rx="10" ry="16" fill="#32CD32"/>
+    </g>
+    
+    <use href="#treeGroup" transform="translate(100, 750) scale(1.5, 1.5)"/>
+    <use href="#treeGroup" transform="translate(250, 780) scale(1.2, 1.2)"/>
+    <use href="#treeGroup" transform="translate(450, 720) scale(1.8, 1.8)"/>
+    <use href="#treeGroup" transform="translate(650, 760) scale(1.3, 1.3)"/>
+    <use href="#treeGroup" transform="translate(850, 740) scale(1.6, 1.6)"/>
+    <use href="#treeGroup" transform="translate(1050, 770) scale(1.4, 1.4)"/>
+    <use href="#treeGroup" transform="translate(1250, 730) scale(1.7, 1.7)"/>
+    <use href="#treeGroup" transform="translate(1450, 760) scale(1.5, 1.5)"/>
+    <use href="#treeGroup" transform="translate(1650, 750) scale(1.2, 1.2)"/>
+    <use href="#treeGroup" transform="translate(1800, 780) scale(1.6, 1.6)"/>
+    
+    <!-- 森林组2 -->
+    <g transform="translate(1350, 650) scale(1.1, 1.1)">
+      <ellipse cx="0" cy="0" rx="6" ry="20" fill="#2E8B57"/>
+      <ellipse cx="-12" cy="-15" rx="10" ry="15" fill="#32CD32"/>
+      <ellipse cx="10" cy="-12" rx="8" ry="12" fill="#228B22"/>
+    </g>
+  </g>
+  
+  <!-- 水面/河流 -->
+  <g opacity="0.7">
+    <!-- 主河流 -->
+    <path d="M0,950 Q480,920 960,940 T1920,950 L1920,1080 L0,1080 Z" 
+          fill="url(#waterGradient)" filter="url(#mountainBlur)"/>
+    
+    <!-- 水面波纹 -->
+    <ellipse cx="480" cy="930" rx="120" ry="8" fill="none" stroke="#5EEAD4" stroke-width="1" opacity="0.4">
+      <animate attributeName="rx" values="120;140;120" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0.2;0.4" dur="6s" repeatCount="indefinite"/>
+    </ellipse>
+    
+    <ellipse cx="1440" cy="950" rx="100" ry="6" fill="none" stroke="#5EEAD4" stroke-width="1" opacity="0.3">
+      <animate attributeName="rx" values="100;120;100" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;0.1;0.3" dur="4s" repeatCount="indefinite"/>
+    </ellipse>
+    
+    <!-- 小湖泊 -->
+    <ellipse cx="1200" cy="800" rx="80" ry="40" fill="url(#waterGradient)" opacity="0.6"/>
+    <ellipse cx="1200" cy="800" rx="70" ry="35" fill="none" stroke="#5EEAD4" stroke-width="1" opacity="0.4"/>
+  </g>
+  
+  <!-- 前景元素 -->
+  <g opacity="0.8">
+    <!-- 花朵 -->
+    <g transform="translate(200, 850)">
+      <circle cx="0" cy="0" r="5" fill="#FF69B4" opacity="0.8"/>
+      <circle cx="-8" cy="-2" r="4" fill="#FFB6C1" opacity="0.7"/>
+      <circle cx="6" cy="-3" r="3.5" fill="#FFB6C1" opacity="0.7"/>
+      <circle cx="0" cy="-6" r="3" fill="#FFC0CB" opacity="0.9"/>
+    </g>
+    
+    <g transform="translate(600, 880)">
+      <circle cx="0" cy="0" r="4" fill="#FF1493" opacity="0.8"/>
+      <circle cx="-6" cy="-2" r="3" fill="#FF69B4" opacity="0.6"/>
+      <circle cx="5" cy="-1" r="2.5" fill="#FFB6C1" opacity="0.6"/>
+    </g>
+    
+    <g transform="translate(1400, 900)">
+      <circle cx="0" cy="0" r="6" fill="#9370DB" opacity="0.7"/>
+      <circle cx="-10" cy="-3" r="4" fill="#FF69B4" opacity="0.5"/>
+      <circle cx="8" cy="-2" r="3" fill="#FFB6C1" opacity="0.5"/>
+    </g>
+    
+    <!-- 草地细节 -->
+    <g opacity="0.4">
+      <ellipse cx="300" cy="950" rx="30" ry="8" fill="#90EE90" opacity="0.6"/>
+      <ellipse cx="700" cy="920" rx="40" ry="10" fill="#98FB98" opacity="0.5"/>
+      <ellipse cx="1100" cy="940" rx="35" ry="9" fill="#90EE90" opacity="0.6"/>
+      <ellipse cx="1500" cy="960" rx="25" ry="7" fill="#98FB98" opacity="0.5"/>
+      <ellipse cx="1800" cy="930" rx="45" ry="12" fill="#90EE90" opacity="0.4"/>
+    </g>
+  </g>
+  
+  <!-- 动态鸟群 -->
+  <g opacity="0.7">
+    <!-- 飞鸟1 -->
+    <g transform="translate(500, 250)">
+      <path d="M0,0 Q-5,-3 -10,0 M0,0 Q5,-2 10,0" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round">
+        <animateTransform attributeName="transform" type="translate" 
+                          values="500,250; 520,240; 500,250" 
+                          dur="3s" repeatCount="indefinite"/>
+      </path>
+    </g>
+    
+    <!-- 飞鸟2 -->
+    <g transform="translate(800, 180)">
+      <path d="M0,0 Q-3,-2 -8,0 M0,0 Q3,-1 8,0" stroke="#333" stroke-width="1.5" fill="none" stroke-linecap="round">
+        <animateTransform attributeName="transform" type="translate" 
+                          values="800,180; 780,170; 800,180" 
+                          dur="4s" repeatCount="indefinite"/>
+      </path>
+    </g>
+    
+    <!-- 飞鸟3 -->
+    <g transform="translate(1200, 300)">
+      <path d="M0,0 Q-4,-2 -9,0 M0,0 Q4,-2 9,0" stroke="#333" stroke-width="1.8" fill="none" stroke-linecap="round">
+        <animateTransform attributeName="transform" type="translate" 
+                          values="1200,300; 1220,290; 1200,300" 
+                          dur="3.5s" repeatCount="indefinite"/>
+      </path>
+    </g>
+  </g>
+</svg>
