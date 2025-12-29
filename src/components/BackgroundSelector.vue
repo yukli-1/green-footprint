@@ -66,40 +66,40 @@ export default {
         id: 'forest-hero',
         name: '森林风光',
         description: '郁郁葱葱的森林景象',
-        thumbnail: '/images/heroes/forest-hero.svg',
-        fullImage: '/images/heroes/forest-hero.svg',
+        thumbnail: '/images/heroes/forest-hero-9.JPG',
+        fullImage: '/images/heroes/forest-hero-9.JPG',
         tags: ['自然', '绿色']
       },
       {
         id: 'gradient-eco',
         name: '渐变环保',
         description: '现代感的渐变效果',
-        thumbnail: '/images/backgrounds/gradient-eco.svg',
-        fullImage: '/images/backgrounds/gradient-eco.svg',
+        thumbnail: '/images/backgrounds/gradient-eco-9.JPG',
+        fullImage: '/images/backgrounds/gradient-eco-9.JPG',
         tags: ['现代', '渐变']
       },
       {
         id: 'particle-field',
         name: '粒子星空',
         description: '动态粒子效果',
-        thumbnail: '/images/backgrounds/particle-field.svg',
-        fullImage: '/images/backgrounds/particle-field.svg',
+        thumbnail: '/images/backgrounds/particle-field-9.JPG',
+        fullImage: '/images/backgrounds/particle-field-9.JPG',
         tags: ['科技', '动态']
       },
       {
         id: 'geometric-eco',
         name: '几何生态',
         description: '几何图形组合',
-        thumbnail: '/images/backgrounds/geometric-eco.svg',
-        fullImage: '/images/backgrounds/geometric-eco.svg',
+        thumbnail: '/images/backgrounds/geometric-eco-9.JPG',
+        fullImage: '/images/backgrounds/geometric-eco-9.JPG',
         tags: ['几何', '设计']
       },
       {
         id: 'nature-premium',
         name: '自然精华',
         description: '高质量自然景观',
-        thumbnail: '/images/backgrounds/nature-premium.svg',
-        fullImage: '/images/backgrounds/nature-premium.svg',
+        thumbnail: '/images/backgrounds/nature-premium-9.JPG',
+        fullImage: '/images/backgrounds/nature-premium-9.JPG',
         tags: ['自然', '高质量']
       }
     ]

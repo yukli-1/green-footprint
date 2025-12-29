@@ -7,7 +7,7 @@
       <!-- 炫酷欢迎横幅 -->
       <section class="welcome-banner">
         <div class="banner-bg">
-          <img src="/images/backgrounds/nature-premium.svg" alt="高级自然背景" class="banner-image"/>
+          <img src="/images/backgrounds/nature-premium-9.JPG" alt="高级自然背景" class="banner-image"/>
         </div>
         <div class="banner-content">
           <h1 class="eco-title">
@@ -26,8 +26,8 @@
         
         <!-- 装饰性背景元素 -->
         <div class="decorative-elements">
-          <img src="/images/ui/decoration-leaves.svg" alt="装饰叶子" class="decoration-leaves"/>
-          <img src="/images/ui/eco-pattern.svg" alt="环保图案" class="decoration-pattern"/>
+          <img src="/images/ui/decoration-leaves-9.JPG" alt="装饰叶子" class="decoration-leaves"/>
+          <img src="/images/ui/eco-pattern-9.JPG" alt="环保图案" class="decoration-pattern"/>
         </div>
         </div>
         <div class="banner-stats" v-if="store.user.isLoggedIn">
@@ -48,7 +48,7 @@
       <section class="feature-grid">
         <div class="feature-card" @click="navigate('/action-record')">
           <div class="feature-icon">
-            <img src="/images/icons/actions/record-action.svg" alt="记录行动" class="icon-image"/>
+            <img src="/images/icons/actions/record-action-9.JPG" alt="记录行动" class="icon-image"/>
           </div>
           <h3>记录行动</h3>
           <p>记录环保行动，获取贡献值</p>
@@ -56,7 +56,7 @@
         
         <div class="feature-card" @click="navigate('/footprint-data')">
           <div class="feature-icon">
-            <img src="/images/icons/actions/data-analysis.svg" alt="足迹数据" class="icon-image"/>
+            <img src="/images/icons/actions/data-analysis-9.JPG" alt="足迹数据" class="icon-image"/>
           </div>
           <h3>足迹数据</h3>
           <p>查看环保数据统计</p>
@@ -64,7 +64,7 @@
         
         <div class="feature-card" @click="navigate('/community-challenge')">
           <div class="feature-icon">
-            <img src="/images/icons/actions/challenge-trophy.svg" alt="社群挑战" class="icon-image"/>
+            <img src="/images/icons/actions/challenge-trophy-9.JPG" alt="社群挑战" class="icon-image"/>
           </div>
           <h3>社群挑战</h3>
           <p>参与环保挑战活动</p>

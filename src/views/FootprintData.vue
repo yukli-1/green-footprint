@@ -345,24 +345,24 @@ export default {
 
     const getPlantImage = (emojiOrName) => {
       const plantImages = {
-        '🌻': '/images/plants/sunflower.svg',
-        'sunflower': '/images/plants/sunflower.svg',
-        'sunflower.svg': '/images/plants/sunflower.svg',
-        '🌹': '/images/plants/rose.svg',
-        'rose': '/images/plants/rose.svg',
-        'rose.svg': '/images/plants/rose.svg',
-        '🌵': '/images/plants/cactus.svg',
-        'cactus': '/images/plants/cactus.svg',
-        'cactus.svg': '/images/plants/cactus.svg',
-        '🌸': '/images/plants/cherry-blossom.svg',
-        '🎋': '/images/plants/bamboo.svg',
-        '樱花': '/images/plants/cherry-blossom.svg',
-        '樱花树': '/images/plants/cherry-blossom.svg',
-        'cherry': '/images/plants/cherry-blossom.svg',
-        'cherry-blossom.svg': '/images/plants/cherry-blossom.svg',
-        '竹子': '/images/plants/bamboo.svg',
-        'bamboo': '/images/plants/bamboo.svg',
-        'bamboo.svg': '/images/plants/bamboo.svg'
+        '🌻': '/images/plants/sunflower-9.JPG',
+        'sunflower': '/images/plants/sunflower-9.JPG',
+        'sunflower.svg': '/images/plants/sunflower-9.JPG',
+        '🌹': '/images/plants/rose-9.JPG',
+        'rose': '/images/plants/rose-9.JPG',
+        'rose.svg': '/images/plants/rose-9.JPG',
+        '🌵': '/images/plants/cactus-9.JPG',
+        'cactus': '/images/plants/cactus-9.JPG',
+        'cactus.svg': '/images/plants/cactus-9.JPG',
+        '🌸': '/images/plants/cherry-blossom-9.JPG',
+        '🎋': '/images/plants/bamboo-9.JPG',
+        '樱花': '/images/plants/cherry-blossom-9.JPG',
+        '樱花树': '/images/plants/cherry-blossom-9.JPG',
+        'cherry': '/images/plants/cherry-blossom-9.JPG',
+        'cherry-blossom.svg': '/images/plants/cherry-blossom-9.JPG',
+        '竹子': '/images/plants/bamboo-9.JPG',
+        'bamboo': '/images/plants/bamboo-9.JPG',
+        'bamboo.svg': '/images/plants/bamboo-9.JPG'
       }
 
       const key = (emojiOrName || '').toString().trim()
@@ -383,12 +383,12 @@ export default {
 
     const getBadgeImage = (badgeId) => {
       const badgeImages = {
-        1: '/images/badges/bronze-eco-warrior.svg',
-        2: '/images/badges/bronze-eco-warrior.svg', 
-        3: '/images/badges/silver-eco-champion.svg',
-        4: '/images/badges/gold-eco-master.svg'
+        1: '/images/badges/bronze-eco-warrior-9.JPG',
+        2: '/images/badges/bronze-eco-warrior-9.JPG',
+        3: '/images/badges/silver-eco-champion-9.JPG',
+        4: '/images/badges/gold-eco-master-9.JPG'
       }
-      return badgeImages[badgeId] || '/images/badges/bronze-eco-warrior.svg'
+      return badgeImages[badgeId] || '/images/badges/bronze-eco-warrior-9.JPG'
     }
 
     return {

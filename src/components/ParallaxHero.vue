@@ -111,19 +111,19 @@ export default {
         id: 2,
         class: 'clouds-layer',
         speed: 0.3,
-        image: '/images/backgrounds/parallax-layers.svg'
+        image: '/images/backgrounds/parallax-layers-9.JPG'
       },
       {
         id: 3,
         class: 'mountains-layer',
         speed: 0.5,
-        image: '/images/backgrounds/parallax-layers.svg'
+        image: '/images/backgrounds/parallax-layers-9.JPG'
       },
       {
         id: 4,
         class: 'trees-layer',
         speed: 0.8,
-        image: '/images/backgrounds/parallax-layers.svg'
+        image: '/images/backgrounds/parallax-layers-9.JPG'
       }
     ])
     

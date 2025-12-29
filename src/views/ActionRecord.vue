@@ -248,14 +248,14 @@ export default {
 
     const getActionImage = (typeId) => {
       const actionImages = {
-        'recycling': '/images/scenarios/recycling.svg',
-        'green_transport': '/images/scenarios/green-transport.svg',
-        'water_saving': '/images/scenarios/recycling.svg',
-        'energy_saving': '/images/scenarios/green-transport.svg',
-        'tree_planting': '/images/scenarios/recycling.svg',
-        'cleanup': '/images/scenarios/green-transport.svg'
+        'recycling': '/images/scenarios/recycling-9.JPG',
+        'green_transport': '/images/scenarios/green-transport-9.JPG',
+        'water_saving': '/images/scenarios/recycling-9.JPG',
+        'energy_saving': '/images/scenarios/green-transport-9.JPG',
+        'tree_planting': '/images/scenarios/recycling-9.JPG',
+        'cleanup': '/images/scenarios/green-transport-9.JPG'
       }
-      return actionImages[typeId] || '/images/scenarios/green-transport.svg'
+      return actionImages[typeId] || '/images/scenarios/green-transport-9.JPG'
     }
 
     return {
